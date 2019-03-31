@@ -9,11 +9,21 @@ const db = mysql.createConnection({
 
 db.connect();
 
-let nama = 'Dudung';
-let sql = "SELECT * FROM karyawan WHERE nama = ? ";
-
-db.query(sql, nama, (err, result) => {
+// CREATE
+let data = { nama: "Dedi", usia: 23 };
+let sql = "INSERT INTO karyawan SET ?";
+db.query(sql, data, (err, result) => {
     if(err) throw err;
+    console.log("Insert Data");
+    console.log(result);
+});
+console.log("-------------------------------------------------");
+// READ
+sql = "SELECT * FROM karyawan";
+
+db.query(sql, (err, result) => {
+    if(err) throw err;
+    console.log("Read Data")
     console.log(result);
 });
 
