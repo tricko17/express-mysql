@@ -9,9 +9,10 @@ const db = mysql.createConnection({
 
 db.connect();
 
-let sql = "SELECT * FROM karyawan";
+let nama = 'Dudung';
+let sql = "SELECT * FROM karyawan WHERE nama = ? ";
 
-db.query(sql, (err, result) => {
+db.query(sql, nama, (err, result) => {
     if(err) throw err;
     console.log(result);
 });
